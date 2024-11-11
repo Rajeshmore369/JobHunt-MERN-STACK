@@ -89,7 +89,7 @@ export const login = async (req, res) => {
         sameSite: "strict",
       })
       .json({
-        message: `Welcome Back ${user.fullname}`,
+        message: `Welcome ${user.fullname}`,
         user,
         success: true,
       });
