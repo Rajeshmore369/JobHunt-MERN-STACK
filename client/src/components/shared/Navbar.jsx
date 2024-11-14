@@ -30,7 +30,7 @@ const Navbar = () => {
               </Link>
               <Link to={"/signup"}>
                 <Button
-                  className="bg-[#8a5bdc] hover:bg-[#611cd8]"
+                  className="bg-[#6A38C2] text-white hover:text-white hover:bg-[#9675d0]"
                   variant="outline"
                 >
                   Signup
