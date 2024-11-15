@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./shared/Navbar";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Contact, Mail, Pen } from "lucide-react";
@@ -7,11 +7,12 @@ import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
 import AppliedJobTable from "./AppliedJobTable";
 import UpdateProfileDialog from "./UpdateProfileDialog";
+import { useSelector } from "react-redux";
 
-const skills = ["HTML", "CSS", "JavaScript", "React"];
 const isResume = true;
 
 const Profile = () => {
+  const { user } = useSelector((store) => store.auth);
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -26,11 +27,8 @@ const Profile = () => {
               />
             </Avatar>
             <div>
-              <h1 className="text-lg font-medium"> Full Name</h1>
-              <p className="font-sm text-gray-600">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti, omnis.
-              </p>
+              <h1 className="text-lg font-medium"> {user?.fullname}</h1>
+              <p className="font-sm text-gray-600">{user?.profile?.bio}</p>
             </div>
           </div>
           <div>
@@ -46,18 +44,20 @@ const Profile = () => {
         <div className="my-5">
           <div className="flex items-center gap-3 my-2">
             <Mail />
-            <span>Rajesh@gmail.com</span>
+            <span>{user?.email}</span>
           </div>
           <div className="flex items-center gap-3 ">
             <Contact />
-            <span>89123459821</span>
+            <span>{user?.phoneNo}</span>
           </div>
         </div>
         <div className="my-5">
           <h1 className="text-md font-medium">Skills</h1>
           <div className=" flex items-center gap-2">
-            {skills.length !== 0 ? (
-              skills.map((item, idx) => <Badge key={idx}>{item}</Badge>)
+            {user?.profile?.skills.length !== 0 ? (
+              user?.profile?.skills.map((item, idx) => (
+                <Badge key={idx}>{item}</Badge>
+              ))
             ) : (
               <p className="text-gray-600">No skills found.</p>
             )}
@@ -69,10 +69,10 @@ const Profile = () => {
           {isResume ? (
             <a
               target="blank"
-              href="https://github.com/"
+              href={user?.profile?.resume}
               className="text-blue-500 w-full cursor-pointer hover:underline"
             >
-              Resume
+              {user?.profile?.resumeOriginalName}
             </a>
           ) : (
             <span className="text-md">No Resume Found</span>
