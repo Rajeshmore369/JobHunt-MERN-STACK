@@ -6,7 +6,7 @@ const isAuthenticated = async (req, res, next) => {
     if (!token) {
       return res
         .status(401)
-        .json({ message: "Not authenticated", success: false });
+        .json({ message: "USER is Not authenticated", success: false });
     }
     const decode = await jwt.verify(token, process.env.SECRET_KEY);
     if (!decode) {

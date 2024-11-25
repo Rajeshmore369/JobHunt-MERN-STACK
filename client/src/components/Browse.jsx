@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./shared/Navbar";
 import Footer from "./shared/Footer";
 import Job from "./Job";
@@ -14,8 +13,8 @@ const Browse = () => {
           Search Results( {randomJobs.length})
         </h1>
         <div className="grid grid-cols-3 gap-4">
-          {randomJobs.map((item, idx) => {
-            return <Job />;
+          {randomJobs.map(() => {
+            return <Job key={""} />;
           })}
         </div>
       </div>

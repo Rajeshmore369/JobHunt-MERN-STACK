@@ -11,13 +11,6 @@ dotenv.config({});
 
 const app = express();
 
-app.get("/home", (req, res) => {
-  return res.status(200).json({
-    message: "i am coming from backend",
-    success: true,
-  });
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -32,7 +25,7 @@ const PORT = process.env.PORT || 3000;
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", JobRoute);
-app.use("api/v1/application", ApplicationRoute);
+app.use("/api/v1/application", ApplicationRoute);
 
 app.listen(PORT, () => {
   connectDB();

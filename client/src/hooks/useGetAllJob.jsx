@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
-const useGetAllJobs = () => {
+const getAllJob = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchAllJobs = async () => {
@@ -18,11 +18,11 @@ const useGetAllJobs = () => {
         }
       } catch (error) {
         console.log(error);
-        toast.error(error.responce.data.massage);
+        toast.error(error.res.data.massage);
       }
     };
     fetchAllJobs();
   }, []);
 };
 
-export default useGetAllJobs;
+export default getAllJob;

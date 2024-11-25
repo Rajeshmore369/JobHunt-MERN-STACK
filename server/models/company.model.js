@@ -17,15 +17,14 @@ const companySchema = new mongoose.Schema(
       type: String,
     },
     logo: {
-      type: String,
+      type: String, // URL to company logo
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: "User",
+      required: true,
     },
   },
-  { Timestamps: true }
+  { timestamps: true }
 );
-
 export const Company = mongoose.model("Company", companySchema);

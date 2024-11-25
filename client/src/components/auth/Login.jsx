@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../shared/Navbar";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { RadioGroup } from "../ui/radio-group";
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -94,9 +94,9 @@ const Login = () => {
                 <Input
                   type="radio"
                   name="role"
-                  value="recruiter"
+                  value="Recruiter"
                   className="cursor-pointer"
-                  checked={input.role == "recruiter"}
+                  checked={input.role == "Recruiter"}
                   onChange={changeEventhandler}
                 />
                 <Label>Recruiter</Label>
@@ -115,7 +115,7 @@ const Login = () => {
           )}
 
           <span className="text-sm">
-            don't have an account?
+            don`t have an account?
             <Link to={"/signup"} className="text-blue-600">
               Signup
             </Link>
